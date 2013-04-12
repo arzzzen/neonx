@@ -1,6 +1,6 @@
 ﻿{% extends "base.html" %}
 {% block content %}
-{{ city.title }}
+<a href="/">{{ city.title }}</a>
 {% for ad in ads %}
 <h2>{{ ad.title }} {{ad.price}}р.</h2>
 <p>{{ ad.city }} </p>

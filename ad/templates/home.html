@@ -1,17 +1,24 @@
 ﻿{% extends "base.html" %}
 {% block content %}
-{% if user %}
-<p>Вы зашли как {{ user }} <a href="/logout/">Выход</a></p>
-{% endif %}
-{% if not user %}
-<form action="/" method="post">
-{{ form.as_p }}
-<input type="submit" value="Вход" />
-</form>
-{% endif %}
-
-{% for city in citys %}
-<p><a href="/{{ city.name }}">{{ city.title }}</a></p>
-{% endfor %}
-
+    <div class="row-fluid">
+        <div class="span6 text-center">
+            <h2>О нас</h2>
+            <p class="lead">На нашем сайте вы можете покупать и продавать своих рыбок.</p>
+            <p>И это очень хорошо.</p>
+            <a class="btn btn-large btn-success" href="/registration">Зарегистрируйся</a>
+        </div>
+        <div class="span6">
+            <h2>Города</h2>
+            <div class="row-fluid">
+                <div class="span6">
+            {% for city in citys %}
+                {% if city.name == "nigni-novgorod" %}
+                    </div><div class="span6">
+                {% endif %}
+            <p><a href="/{{ city.name }}">{{ city.title }}</a></p>
+            {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

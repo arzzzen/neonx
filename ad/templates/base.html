@@ -1,10 +1,31 @@
 ﻿<!DOCTYPE html>
 <title>NEONX</title>
 <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+{% load static from staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.js"></script>
 <body>
-<a href="/"><h1>NEONX</h1></a>
-<a href="/archive/">Архив объявлений</a>
-<a href="/addition/">Добавлениен объявления</a>
-{% block content %}
-{% endblock %}
+    <div class="container-narrow">
+        <div class="mast-head">
+            <ul class="nav nav-pills pull-right">
+                <li class="{% ifequal request.path '/'%}active{% endifequal %}"><a href="{% url 'ad.views.home' %}">Главная</a></li>
+                <li class="{% ifequal request.path '/archive'%}active{% endifequal %}"><a href="{% url 'ad.views.archive' %}">Архив</a></li>
+                <li class="{% ifequal request.path '/addition'%}active{% endifequal %}"><a href="{% url 'ad.views.addition' %}">Добавить</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="/addition/">Профиль</a></li>
+                {% else %}
+                    <li><a href="/login">Вход</a></li>
+                {% endif %}
+            </ul>
+            <h1>NEONX</h1>
+        </div>
+        <hr>
+        {% block content %}
+        {% endblock %}
+        <hr>
+        <p>© Neonx 2012</p>
+    </div>
 </body>

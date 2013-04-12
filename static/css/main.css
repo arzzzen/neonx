@@ -1,3 +1,9 @@
-﻿body {
-	font-family: "PT Sans", Arial;
+body {
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+
+.container-narrow {
+	margin: 0 auto;
+	max-width: 700px;
 }

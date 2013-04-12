@@ -1,7 +1,7 @@
 ﻿{% extends "base.html" %}
 {% block content %}
-<form action="/addition/" method="post">
+<form action="/addition/" method="post">{% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Добавить" />
+<button class="btn btn-large btn-success" type="submit" value="Добавить" ><i class="icon-ok icon-white "></i> Добавить</button>
 </form>
 {% endblock %}

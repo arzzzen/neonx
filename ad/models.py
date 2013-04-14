@@ -31,6 +31,7 @@ class Ad(models.Model):
     category = models.ForeignKey(Category, verbose_name = 'Категория')
     city = models.ForeignKey(City, verbose_name = 'Город')
     user = models.ForeignKey(User)
+    image = models.ImageField(upload_to='images', blank=True, default='images/default.jpg', verbose_name = 'Фото')
     class Meta:
         ordering = ('-timestamp',)
         verbose_name = 'Объявление'

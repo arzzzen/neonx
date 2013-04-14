@@ -1,10 +1,17 @@
-﻿{% extends "base.html" %}
-{% block content %}
-{% for ad in ads %}
-<h2>{{ ad.title }} {{ad.price}}р.</h2>
-<p><a href="/{{ ad.city.name }}">{{ ad.city.title }}</a> </p>
-<p>{{ ad.timestamp }} </p>
-<p>{{ ad.category }} </p>
-<p>{{ ad.description }}</p>
-{% endfor %}
+﻿{% block content %}
+    {% load thumbnail %}
+    {% for ad in ads %}
+        <h2>{{ ad.title }} {{ad.price}}р.</h2>
+        <div class="row-fluid">
+            <div class="span7">
+                <p><a href="/{{ ad.city.name }}">{{ ad.city.title }}</a> | {{ ad.user }}</p>
+                <p>{{ ad.timestamp }} </p>
+                <p>{{ ad.category }} </p>
+                <p>{{ ad.description }}</p>
+            </div>
+            <div class="span5 text-center">
+                <img src = "{{ ad.image|thumbnail_url:'img' }}" alt="" />
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

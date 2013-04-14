@@ -2,7 +2,6 @@
 <head>
     <meta charset="utf-8">
     <title>NEONX</title>
-
     {% load static from staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-responsive.css'%}" />
@@ -13,29 +12,25 @@
 <body>
     <div class="container-narrow">
         <div class="mast-head">
-            {% if user.is_authenticated %}
-            <div class="btn-group pull-right">
-                <a class="btn" href="#"><i class="icon-user"></i> {{ user.username }}</a>
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#"><i class="icon-pencil"></i> Редактировать</a></li>
-                    <li><a href="#"><i class="icon-trash"></i> Удалить</a></li>
-                    <li><a href="#"><i class="icon-ban-circle"></i> Забанить</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{% url 'ad.views.userlogout' %}"><i class="i"></i> Выход</a></li>
-                </ul>
-            </div>
-            {% endif %}
             <ul class="nav nav-pills pull-right">
                 <li class="{% ifequal request.path '/'%}active{% endifequal %}"><a href="{% url 'ad.views.home' %}">Главная</a></li>
                 <li class="{% ifequal request.path '/archive'%}active{% endifequal %}"><a href="{% url 'ad.views.archive' %}">Архив</a></li>
                 <li class="{% ifequal request.path '/addition'%}active{% endifequal %}"><a href="{% url 'ad.views.addition' %}">Добавить</a></li>
                 {% if not user.is_authenticated %}
-                    <li><a href="/login">Вход</a></li>
+                    <li class="{% ifequal request.path '/login'%}active{% endifequal %}"><a href="{% url 'ad.views.login_user' %}">Вход</a></li>
+                {% else %}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i>
+                        {{ user.username }}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'ad.views.addition' %}"><i class="icon-plus"></i> Подать объявление</a></li>
+                        <li><a href="#"><i class="icon-list"></i> Мои объявления</a></li>
+                        <li><a href="#"><i class="icon-edit"></i> Настройки</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{% url 'ad.views.userlogout' %}"><i class="i"></i> Выход</a></li></ul>
+                </li>
                 {% endif %}
             </ul>
-
-
             <h1>NEONX</h1>
         </div>
         <hr>

@@ -1,5 +1,6 @@
 # Django settings for neonx project.
 
+THUMBNAIL_DEBUG = True
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -50,12 +51,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = 'D:/neonx/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -124,6 +125,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'ad',
     'userprof',
+    'south',
+    'easy_thumbnails',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -161,3 +164,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
 )
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'img': {'size': (140, 140)},
+    },
+}

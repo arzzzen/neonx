@@ -2,11 +2,5 @@
 {% block content %}
 {{ city.title }}
 {{ category.title }}
-{% for ad in ads %}
-<h2>{{ ad.title }} {{ad.price}}р.</h2>
-<p>{{ ad.city }} </p>
-<p>{{ ad.timestamp }} </p>
-<p>{{ ad.category }} </p>
-<p>{{ ad.description }}</p>
-{% endfor %}
+{% include "archive.html" %}
 {% endblock %}

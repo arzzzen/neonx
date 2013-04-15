@@ -1,6 +1,6 @@
 ﻿{% extends "base.html" %}
 {% block content %}
-<form action="/addition/" method="post">{% csrf_token %}
+<form action="/addition/" enctype="multipart/form-data" method="post">{% csrf_token %}
 {{ form.as_p }}
 <button class="btn btn-large btn-success" type="submit" value="Добавить" ><i class="icon-ok icon-white "></i> Добавить</button>
 </form>
